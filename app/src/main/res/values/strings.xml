@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Quiz</string>
+
+    <string name="true_button">True</string>
+    <string name="false_button">False</string>
+    <string name="initial_score">Score 0/13</string>
+
+
+
+    <string name="incorrect_toast">OPS! Not right</string>
+    <string name="correct_toast">Awesome! Well done </string>
+
+    <string name="question_1"> An array in the Java programming language has the ability to store many different types of values</string>
+    <string name="question_2">The == operator can be used to compare two String objects. The result is always true if the two strings are identical</string>
+    <string name="question_3">An individual array element from an array of type int, when passed to a method is passed by value</string>
+    <string name="question_4">A class in java should start with a capital letter</string>
+    <string name="question_5">In Android Studio the MainActivity class is the boss that takes care of launching the app</string>
+    <string name="question_6">Activities in android apps dictate the UI and handle the user interaction to the smart phone screen</string>
+    <string name="question_7"> Services in android apps handle background processing associated with an application</string>
+    <string name="question_8">Content provides handle data and database management issues</string>
+    <string name="question_9"> An event listener is in the View class that contains a single callback method. These methods will be called by the Android framework when the View to which the listener has been registered is triggered by the user</string>
+    <string name="question_10">An Android Intent is an abstract description of an operation to be performed. It can be used with startActivity to launch an Activity</string>
+    <string name="question_11">In java you can create any variable by just naming it, example number =5 </string>
+    <string name="question_12">The activity_main.xml is under the values directory in the resources folder</string>
+    <string name="question_13">You are a great Android App developer</string>
+
+</resources>
