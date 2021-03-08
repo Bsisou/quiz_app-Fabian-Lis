@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 public class MainActivity extends Activity {
 
-    // TODO: Declare constants here
+    // TODO: Declare constants heres
 
 
     // TODO: Declare member variables here:
