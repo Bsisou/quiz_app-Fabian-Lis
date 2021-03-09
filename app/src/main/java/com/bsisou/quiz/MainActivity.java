@@ -1,18 +1,21 @@
 package com.bsisou.quiz;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
     // TODO: Declare constants heres
-    final int PROGRESS_BAR_INCREMENT = 100.0/ questionBank.length;
 
     // TODO: Declare member variables here:
     Button trueButton;
@@ -25,7 +28,7 @@ public class MainActivity extends Activity {
     int score;
 
     // TODO: to create question bank
-    private TrueFalse[] questionBank = new com.bsisou.quiz.TrueFalse[]{
+    private final TrueFalse[] questionBank = new com.bsisou.quiz.TrueFalse[]{
             new TrueFalse(R.string.question_1, false),
             new TrueFalse(R.string.question_2, false),
             new TrueFalse(R.string.question_3, true),
@@ -76,12 +79,13 @@ public class MainActivity extends Activity {
             }
         });
     }
+    @SuppressLint("SetTextI18n")
     private void updateQuestion(){
         index = (index + 1) % questionBank.length;
         if (index == 0){
             AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
             alert.setTitle("Game Over");
-            alert.setCancelable(False);
+            alert.setCancelable(false);
             alert.setMessage("Your score " + score + " points");
             alert.setPositiveButton("Close Application", new DialogInterface.OnClickListener(){
                 @Override
@@ -99,13 +103,13 @@ public class MainActivity extends Activity {
 
     private void checkAnswer(boolean UserSelection){
 
-        boolean correctAnswer = questionBank[index].isAnswer();
+        boolean correctAnswer = questionBank[index].getAnswer();
 
-        if(userSelection == correctAnswer){
-            toastMessage = maketext(getApplicationContext(),"Awsome! well done", Toast.LENGTH_LONG);
+        if(UserSelection == correctAnswer){
+            Toast toastMessage = Toast.makeText(getApplicationContext(),"Awsome! well done", Toast.LENGTH_LONG);
             score+=1;
         } else {
-            toastMessage = maketext(getApplicationContext(),"OPS! Not Right", Toast.LENGTH_LONG);
+            Toast toastMessage = Toast.makeText(getApplicationContext(),"OPS! Not Right", Toast.LENGTH_LONG);
         }
     }
 }
