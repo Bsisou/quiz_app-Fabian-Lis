@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 
     // TODO: Declare constants heres
-
+    final int PROGRESS_BAR_INCREMENT = 100.0/ questionBank.length;
 
     // TODO: Declare member variables here:
     Button trueButton;
@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
     ProgressBar progressBar;
     int index;
     int question;
+    int score;
 
     // TODO: to create question bank
     private TrueFalse[] questionBank = new com.bsisou.quiz.TrueFalse[]{
@@ -39,6 +40,7 @@ public class MainActivity extends Activity {
             new TrueFalse(R.string.question_12, false),
             new TrueFalse(R.string.question_13, true)
     };
+    final int PROGRESS_BAR_INCREMENT = (int) Math.ceil(100.0 / questionBank.length);
 
 
     @Override
@@ -75,12 +77,24 @@ public class MainActivity extends Activity {
         });
     }
     private void updateQuestion(){
-        index+=1;
+        index = (index + 1) % questionBank.length;
+        if (index == 0){
+            AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+            alert.setTitle("Game Over");
+            alert.setCancelable(False);
+            alert.setMessage("Your score " + score + " points");
+            alert.setPositiveButton("Close Application", new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialog, int which){
+                    finish();
+                }
+            });
+            alert.show();
+        }
         question = questionBank[index].getQuestionID();
         questionTextView.setText(question);
-        if (index == 13){
-            index = 0;
-        }
+        progressBar.incrementProgressBy(PROGRESS_BAR_INCREMENT);
+        scoreTextView.setText("Score" + score + "/" + questionBank.length);
     }
 
     private void checkAnswer(boolean UserSelection){
@@ -88,10 +102,10 @@ public class MainActivity extends Activity {
         boolean correctAnswer = questionBank[index].isAnswer();
 
         if(userSelection == correctAnswer){
-            toastMessage maketext(getApplicationContext(),"Awsome! well done", Toast.LENGTH_LONG);
+            toastMessage = maketext(getApplicationContext(),"Awsome! well done", Toast.LENGTH_LONG);
             score+=1;
         } else {
-            toastMessage maketext(getApplicationContext(),"OPS! Not Right", Toast.LENGTH_LONG);
+            toastMessage = maketext(getApplicationContext(),"OPS! Not Right", Toast.LENGTH_LONG);
         }
     }
 }
