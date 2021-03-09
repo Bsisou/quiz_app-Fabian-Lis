@@ -59,6 +59,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Log.d("Quiz","True button pressed");
+                checkAnswer(true);
                 updateQuestion();
 
             }
@@ -68,6 +69,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Log.d("Quiz","false button pressed");
+                checkAnswer(false);
                 updateQuestion();
             }
         });
@@ -78,6 +80,18 @@ public class MainActivity extends Activity {
         questionTextView.setText(question);
         if (index == 13){
             index = 0;
+        }
+    }
+
+    private void checkAnswer(boolean UserSelection){
+
+        boolean correctAnswer = questionBank[index].isAnswer();
+
+        if(userSelection == correctAnswer){
+            toastMessage maketext(getApplicationContext(),"Awsome! well done", Toast.LENGTH_LONG);
+            score+=1;
+        } else {
+            toastMessage maketext(getApplicationContext(),"OPS! Not Right", Toast.LENGTH_LONG);
         }
     }
 }
