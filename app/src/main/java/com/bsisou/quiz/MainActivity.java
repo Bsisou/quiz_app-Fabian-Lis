@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-    // TODO: Declare constants heres
+    // TODO: Declare constants here
 
     // TODO: Declare member variables here:
     Button trueButton;
@@ -50,6 +50,7 @@ public class MainActivity extends Activity {
 
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,7 +120,7 @@ public class MainActivity extends Activity {
         boolean correctAnswer = questionBank[index].getAnswer();
 
         if(UserSelection == correctAnswer){
-            Toast.makeText(getApplicationContext(), "Awsome! well done", Toast.LENGTH_LONG);
+            Toast.makeText(getApplicationContext(), "Awesome! well done", Toast.LENGTH_LONG);
             score+=1;
         } else {
             Toast.makeText(getApplicationContext(), "OPS! Not Right", Toast.LENGTH_LONG);
