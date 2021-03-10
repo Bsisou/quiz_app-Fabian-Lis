@@ -27,6 +27,8 @@ public class MainActivity extends Activity {
     int question;
     int score;
 
+
+
     // TODO: to create question bank
     private final TrueFalse[] questionBank = new com.bsisou.quiz.TrueFalse[]{
             new TrueFalse(R.string.question_1, false),
@@ -42,8 +44,10 @@ public class MainActivity extends Activity {
             new TrueFalse(R.string.question_11, false),
             new TrueFalse(R.string.question_12, false),
             new TrueFalse(R.string.question_13, true)
+
     };
     final int PROGRESS_BAR_INCREMENT = (int) Math.ceil(100.0 / questionBank.length);
+
 
 
     @Override
@@ -57,6 +61,14 @@ public class MainActivity extends Activity {
         questionTextView = findViewById(R.id.question_text_view);
         scoreTextView = findViewById(R.id.score);
         progressBar = findViewById(R.id.progress_bar);
+        if (savedInstanceState != null){
+            score = savedInstanceState.getInt("scoreKey");
+            index = savedInstanceState.getInt("IndexKey");
+            scoreTextView.setText("Score "+ score + "/" + questionBank.length);
+        } else {
+            score = 0;
+            index = 0;
+        }
         question = questionBank[index].getQuestionID();
         questionTextView.setText(question);
 
@@ -113,4 +125,14 @@ public class MainActivity extends Activity {
             Toast.makeText(getApplicationContext(), "OPS! Not Right", Toast.LENGTH_LONG);
         }
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("ScoreKey", score);
+        outState.putInt("IndexKey", index);
+
+    }
+
 }
