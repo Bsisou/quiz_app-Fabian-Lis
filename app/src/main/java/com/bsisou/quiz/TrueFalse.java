@@ -8,7 +8,7 @@ public class TrueFalse {
         questionID = questionResourseID;
         answer = trueOrfalse;
     }
-//s
+
     public int getQuestionID() {
         return questionID;
     }

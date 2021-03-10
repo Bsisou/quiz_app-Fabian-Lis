@@ -101,15 +101,16 @@ public class MainActivity extends Activity {
         scoreTextView.setText("Score" + score + "/" + questionBank.length);
     }
 
+    @SuppressLint("ShowToast")
     private void checkAnswer(boolean UserSelection){
 
         boolean correctAnswer = questionBank[index].getAnswer();
 
         if(UserSelection == correctAnswer){
-            Toast toastMessage = Toast.makeText(getApplicationContext(),"Awsome! well done", Toast.LENGTH_LONG);
+            Toast.makeText(getApplicationContext(), "Awsome! well done", Toast.LENGTH_LONG);
             score+=1;
         } else {
-            Toast toastMessage = Toast.makeText(getApplicationContext(),"OPS! Not Right", Toast.LENGTH_LONG);
+            Toast.makeText(getApplicationContext(), "OPS! Not Right", Toast.LENGTH_LONG);
         }
     }
 }
